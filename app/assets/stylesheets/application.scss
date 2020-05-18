@@ -13,8 +13,9 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap-sprockets";  /*ここを追加*/
-@import "bootstrap";            /*ここを追加*/
+ 
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
 
 header {
 	color:white;
