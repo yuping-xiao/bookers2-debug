@@ -3,10 +3,36 @@
 
 <h1>Editing Book</h1>
 
-<%= render "books/newform", book: @book %>
-<%= link_to "Show", @book, class: "book_#{@book.id}" %>
-<%= link_to "Back", books_path, class: "back" %>
+<%= form_for(@book) do |f| %>
 
+				<% if @book.errors.any? %>
+					<p>error</p>
+					<div class="alert alert-warning">
+						<ul>
+							<% @book.errors.full_messages.each do |message| %>
+							<li><%= message %></li>
+							<% end %>
+						</ul>
+					</div>
+				<% end %>
+
+				<div class="field row">
+					<h3>Title</h3>
+					<%= f.text_field :title %>
+				</div>
+
+				<div class="field row">
+					<h3>Opinion</h3>
+					<%= f.text_area :body %>
+				</div>
+
+				<div class="actions row">
+					<%= f.submit 'Update Book', class:"btn btn-primary btn-lg btn-block" %>
+				</div>
+
+				<% end %>
+
+				<%= link_to "Show", book_path(@book.id) %> | <%= link_to "Back", "/books" %>
 </div>
 <div class="col-md-3"></div>
 
